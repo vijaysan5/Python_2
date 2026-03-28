@@ -1,61 +1,91 @@
-# Tkinter >>> PIL >>> Image, ImageTk
 import tkinter as tk
+from tkinter import ttk, messagebox
 from PIL import Image, ImageTk
 
 root = tk.Tk()
 root.title("Royalty Flower Pot")
-root.geometry("500x400")
-
-f_image = Image.open("900_image__PNG_logo-removebg-preview.png")
-f_photo = ImageTk.PhotoImage(f_image.resize((700, 700)))
-
-label = tk.Label (root, image=f_photo)
-label.place(x=200, y=10)                       # image to photo convert >>> call_ root.mainloop()
+root.geometry("1000x700")
+root.configure(bg="#f0f8ff")  # light blue background
 
 
-A_image = Image.open("900_image_A_logo-removebg-preview.png")               # extra added
-A_photo = ImageTk.PhotoImage(A_image.resize((100, 100)))
+b_image = Image.open("900 image_Royalty_Flowers.jpg").resize((1000, 700))
+b_photo = ImageTk.PhotoImage(b_image)
 
-label_1 = tk.Label (root, image=A_photo)
-label_1.place(x=750, y=130)
+bg_label = tk.Label(root, image=b_photo)
+bg_label.image = b_photo
+bg_label.place(x=0, y=0)
 
-from tkinter import messagebox
-def submit():
-    data = f"""
-    name = {name.get()}
-    dob = {dob.get()}
-    mobile = {mobile.get()}
-    degree = {degree.get()}
-    {loc.get()}
-    """
-    print(data)
-    messagebox.showinfo("Submited", "Registration Succussful!")
+
+logo = Image.open("900_image__PNG_logo-removebg-preview.png").convert("RGBA")
+
+logo = logo.resize((120, 120))  # decreased size
+
+# Blend logo with background color (important)
+bg_color = (240, 248, 255, 255)  # same as window color (#f0f8ff)
+bg_logo = Image.new("RGBA", logo.size, bg_color)
+bg_logo.paste(logo, (0, 0), logo)
+
+logo_photo = ImageTk.PhotoImage(bg_logo)
+
+logo_label = tk.Label(root, image=logo_photo, bg="#f0f8ff")
+logo_label.image = logo_photo
+logo_label.place(x=30, y=20)
+
+
+frame = tk.Frame(root, bg="#ffffff", bd=3, relief="ridge")
+frame.place(x=400, y=80, width=420, height=400)
+
+
 name = tk.StringVar()
 dob = tk.StringVar()
 mobile = tk.StringVar()
-loc = tk.StringVar()
 
-from tkinter import ttk
-Degree = ["B.A(Tamil)", "B.A(English)","B.A(History)", "B.Sc(Maths)", "B.Sc.(Computer Science)", "B.Sc(IT)", "BBA", "BCA"]
-degree = ttk.Combobox(root, values=Degree)
-degree.place(x=500, y=250)
-degree.set(" ")
 
-tk.Label (root, text="Name :").place(x=367, y=160)
-tk.Entry (root, textvariable= name).place(x= 500, y=160)
+def submit():
+    data = f"""
+Name: {name.get()}
+DOB: {dob.get()}
+Mobile: {mobile.get()}
+Degree: {degree.get()}
+Location: {location_box.get('1.0', tk.END).strip()}
+"""
+    print(data)
+    messagebox.showinfo("Submitted", "Registration Successful!")
 
-tk.Label (root, text= "Date of Birth :").place(x=367, y=190)
-tk.Entry (root, textvariable= dob).place(x=500, y=190)
 
-tk.Label (root, text= "Mobile :").place(x=367, y=220)
-tk.Entry (root, textvariable= mobile).place(x=500, y=220)
+tk.Label(frame, text="Registration Form", font=("Arial", 16, "bold"),
+         bg="#ffffff", fg="#7c05eb").place(x=100, y=10)
 
-tk.Label (root, text= "Select your Degree :").place(x=367, y=250)
 
-tk.Label (root, text= "Location :").place(x=367, y=280)
-Textbox = tk.Text (root, height=5, width=20)
-Textbox.place(x=500,  y=280)
+tk.Label(frame, text="Name", bg="#ffffff").place(x=30, y=60)
+tk.Entry(frame, textvariable=name, width=30).place(x=150, y=60)
 
-tk.Button(root, text="Submit", command=submit).place(x= 580, y= 490)
+tk.Label(frame, text="Date of Birth", bg="#ffffff").place(x=30, y=100)
+tk.Entry(frame, textvariable=dob, width=30).place(x=150, y=100)
+
+tk.Label(frame, text="Mobile", bg="#ffffff").place(x=30, y=140)
+tk.Entry(frame, textvariable=mobile, width=30).place(x=150, y=140)
+
+tk.Label(frame, text="Degree", bg="#ffffff").place(x=30, y=180)
+
+Degree = [
+    "B.A(Tamil)", "B.A(English)", "B.A(History)",
+    "B.Sc(Maths)", "B.Sc(Computer Science)",
+    "B.Sc(IT)", "BBA", "BCA"
+]
+
+degree = ttk.Combobox(frame, values=Degree, width=27)
+degree.place(x=150, y=180)
+degree.set("Select Degree")
+
+tk.Label(frame, text="Location", bg="#ffffff").place(x=30, y=220)
+
+location_box = tk.Text(frame, width=23, height=4)
+location_box.place(x=150, y=220)
+
+
+tk.Button(frame, text="Submit", command=submit,
+          bg="#0577c4", fg="white", width=15).place(x=130, y=310)
+
 
 root.mainloop()
