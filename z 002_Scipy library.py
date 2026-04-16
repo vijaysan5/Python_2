@@ -28,3 +28,36 @@ print("Mode Value (stats) :", mode_value)
 print("Concatenation :", concatenat)
 print("Stacking :", stack)
 
+
+
+
+"""_______Scipy library_______"""
+from scipy import constants
+
+"1___Scipy Constants"
+# for use >>> Scientific Constants
+print("\n Scipy Constants...")
+print("Pi Value :", constants.pi)
+print("Light (m/s) :", constants.c)
+print("Gravitation Value :", constants.G)
+print("Avogadro Number :", constants.Avogadro)
+
+
+from scipy import linalg
+
+"2____Scipy Linalg"
+# for use >>> Advanced Matrix Operation
+A = num.array([[21,23],
+                [90,95]])
+print("\n Scipy Linalg...")
+print("Matrix : \n", A)
+print("Determination : \n", linalg.det(A))
+print("Inverse :\n", linalg.inv(A))
+
+# pdf and cdf >>>
+print("Normal PDF at x=0:", stats.norm.pdf(0))
+print("Normal CDF at x=1:", stats.norm.cdf(1))
+# Normal PDF at x=10: 7.69459862670642e-23   #___pdf(10)  terminal
+# Normal CDF at x=12: 1.0                    #___cdf(12)  terminal
+
+
