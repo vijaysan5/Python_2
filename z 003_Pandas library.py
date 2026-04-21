@@ -33,7 +33,7 @@ Data_f = pan.DataFrame(Data_Dict)
 print("\n Data Frame :")
 print(Data_f)
 
-Data_f.to_excel('comp_exsheet.xlsx', index=False)
+# Data_f.to_excel('comp_exsheet.xlsx', index=False)
 Data_f.to_csv('comp_csv.csv', index=False)
 print("Data Saved Successfully...")
 read = pan.read_csv('comp_csv.csv')
@@ -69,3 +69,76 @@ data = pan.DataFrame({'A' : [12, 23, 45], 'XYZ' :[98, 87, 75]})
 print("\nOrginal Data Frame :\n", data)
 data_rename = data.rename(columns={'A' : 'ABS'})
 print("\nRenamed Data Frame :\n", data_rename)
+
+
+
+
+import numpy as num
+import pandas as pan
+
+#___Handling Missing Values :
+data_one = {
+    'NAME' : ['Nivi', 'Bhavi', 'Dhiya', 'Lalitha', 'Dhana'],
+    'POSITION' : ['Managing Dept.', 'Developer Dept.', 'Head Dept.', 'Lab Dept.', 'Lab Dept.'],
+    'INCOME' : [90000, 81000, 88000, 70000, 75000],
+    'AGE' : [28, 25, 26, 31, 33]
+}
+Daf = pan.DataFrame(data_one)
+print("\n Data Frame :")
+print(Daf)
+
+Daf.loc[3, 'INCOME'] = num.nan
+Daf.fillna(num.mean(Daf['INCOME']))
+print("\nAfter Handl nan:")
+print(Daf)
+print("\nDrop Missing Values:")
+print(Daf.dropna())
+
+#___Sort Data :
+Daf_st = Daf.sort_values(by='AGE', ascending=False)
+print("\nStored Dafa :\n", Daf_st)
+
+#___Duplicate Value :
+print("\nDroped Duplicate :\n", Daf_st.drop_duplicates('POSITION'))
+
+
+# Hike >>> with Function
+Emp_Data = {
+    'Name' : ['Anu', 'Dheeran', 'Sabarish', 'Hanvika'],
+    'Monthly_inc' : [20730, 23080, 21090, 24550],
+    'Join Year' : [2025, 2023, 2024, 2020]
+}
+edf = pan.DataFrame(Emp_Data)
+print("\n Emp Data :\n", edf)
+
+def add_hike(Monthly_inc):
+    return Monthly_inc * 1.3
+edf['New_Salary'] = edf['Monthly_inc'].apply(add_hike)
+print("\nAfter Applying new Function :\n", edf)
+
+
+# Rename Column Name >>> Set and Reset Index 
+edf.rename(columns={'Monthly_inc' : 'Act_Salary'}, inplace=True)
+print("\nRenamed Income Column name :\n", edf)
+
+edf_reset_ind = edf.reset_index()
+print("\nReset Index :\n", edf_reset_ind)
+
+edf_set_ind = edf.set_index('Name')
+print("\nSet Index :\n", edf_set_ind)
+
+
+# Merging Data Frame
+edfex = pan.DataFrame({'Name' : ['Hanvika', 'Dheeran'], 'Work dept.' : ['Head of Dept', 'Hr Asst']})
+Merge = pan.merge (edf, edfex, on='Name', how='left')
+print("\nMerged Dataframe :\n", Merge)
+
+
+# Grouping Data
+Group_edf = edf.groupby('Join Year').sum()
+print("\nGrouped edf Data :\n", Group_edf)
+
+
+# Pivot Table
+edf_pivot = edf.pivot_table(values=['Join Year','Act_Salary'], index='Name', aggfunc=num.mean)
+print("\nedf's Pivot Table :\n", edf_pivot)
