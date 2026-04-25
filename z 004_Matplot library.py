@@ -112,3 +112,11 @@ axes_san[1, 1].set_title("IV = Stem Plot")
 
 mplt.tight_layout()
 mplt.show()
+
+
+# Plot Style Checking
+import matplotlib.pyplot as mplt
+print(mplt.style.available)
+
+# mplt.style.use('')
+
