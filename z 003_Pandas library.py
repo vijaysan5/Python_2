@@ -142,3 +142,22 @@ print("\nGrouped edf Data :\n", Group_edf)
 # Pivot Table
 edf_pivot = edf.pivot_table(values=['Join Year','Act_Salary'], index='Name', aggfunc=num.mean)
 print("\nedf's Pivot Table :\n", edf_pivot)
+
+# loc and iloc
+create = {
+    'NAME' : ['Nivi', 'Bhavi', 'Dhiya', 'Lalitha', 'Dhana'],
+    'POSITION' : ['Managing Dept.', 'Developer Dept.', 'Head Dept.', 'Lab Dept.', 'Lab Dept.'],
+    'INCOME' : [90000, 81000, 88000, 70000, 75000],
+    'AGE' : [28, 25, 26, 31, 33]
+}
+Df = pan.DataFrame(create)
+print("\n Data Frame :")
+print(Df)
+
+Df.to_csv("sample.csv")
+print("Data saved in csv file...")
+dfread = pan.read_csv("sample.csv")
+print("\nReady to Read create variable Data :\n", dfread)
+
+drd = dfread.loc[0:2, ['NAME', 'INCOME']]
+print(drd)
