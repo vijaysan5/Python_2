@@ -145,7 +145,7 @@ print("\nedf's Pivot Table :\n", edf_pivot)
 
 # loc and iloc
 create = {
-    'NAME' : ['Nivi', 'Bhavi', 'Dhiya', 'Lalitha', 'Dhana'],
+    'NAME' : ['Nivi', 'Bhavi', 'Dhiya', 'Hanvika', 'Dhana'],
     'POSITION' : ['Managing Dept.', 'Developer Dept.', 'Head Dept.', 'Lab Dept.', 'Lab Dept.'],
     'INCOME' : [90000, 81000, 88000, 70000, 75000],
     'AGE' : [28, 25, 26, 31, 33]
