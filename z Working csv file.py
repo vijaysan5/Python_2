@@ -1,5 +1,5 @@
-import numpy as num
-import pandas as pan
+# import numpy as num
+# import pandas as pan
 
 
 """ csv_reader = pan.read_csv('month_csv.csv')
@@ -64,3 +64,5 @@ mplt.figure(figsize=(10, 20))
 mplt.stem(x_stem, y_stem, linefmt= "b-", markerfmt= "bo", basefmt = "r-")
 mplt.title("Code >>> Stem Plot")
 mplt.show()
+
+

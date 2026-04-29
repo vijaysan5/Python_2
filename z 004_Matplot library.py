@@ -120,3 +120,22 @@ print(mplt.style.available)
 
 # mplt.style.use('')
 
+
+"""___SEABORN___"""
+# kind = "hist" >>> bar > box type 
+# kind = "ecdf" >>> step type
+# kind = "kde"  >>> curved type
+""" 
+import matplotlib.pyplot as mplt
+import seaborn as sb
+con_box = sb.displot([1, 3, 5, 7, 9])   # ==> Normal hist type  
+print("Created 'hist' type seaborn", type(con_box))
+mplt.show()
+
+con_line = sb.displot([0,1,2,3,4,5], kind="kde") 
+print("Created 'kde' type seaborn", type(con_line))
+mplt.show()
+
+con_step = sb.displot([1,3,5,7,9], kind="ecdf")
+print("Created 'ecdf' type seaborn", type(con_step))
+mplt.show() """
