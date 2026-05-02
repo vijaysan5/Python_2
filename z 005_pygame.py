@@ -60,6 +60,12 @@ x_play = WIDTH // 2 - Player_wid / 2
 y_play = HEIGHT - 80
 Play_spd = 5
 
+# Fall 
+b_size = 10
+bx = random.randint(0, WIDTH - b_size)
+by = -b_size
+b_speed = 5
+
 # Score :
 score_point = 0
 font = pygame.font.SysFont("Forte", 25)
@@ -73,15 +79,32 @@ while run :
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             run = False
-    # pygame.draw.circle(winds, RED, (25, 25), 20, 20)
-    # pygame.display.update()
+
     key = pygame.key.get_pressed()
 
     if key[pygame.K_LEFT] and x_play > 0 :
         x_play -= Play_spd
 
-    if key[pygame.K_LEFT] and x_play < WIDTH - x_play:
+    if key[pygame.K_RIGHT] and x_play < WIDTH - Player_wid:
         x_play += Play_spd
+
+    # Moving 
+    by += b_speed
+
+    if by > HEIGHT :
+        bx = random.randint(0, WIDTH - b_size)
+        by = -b_size 
+
+    play_rt = pygame.Rect(x_play, y_play, Player_wid, Player_hig)
+    brt = pygame.draw.circle(winds, GREEN, (bx,by) , b_size)
+
+    if play_rt.colliderect(brt):
+        score_point += 1
+        bx = random.randint(0, WIDTH - b_size)
+        by = -b_size 
+
+    pygame.draw.rect(winds, RED, play_rt)
+    
 
     # Draw score
     score_text = font.render(f"Player Score : {score_point}", True, BLACK)
