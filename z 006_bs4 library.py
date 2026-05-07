@@ -40,9 +40,6 @@ prd = [pro.text.strip() for pro in product]
 print(prd)
 
 
-
-
-
 import requests
 from bs4 import BeautifulSoup
 
@@ -63,10 +60,6 @@ Product_Name = [Pro.text.strip() for Pro in Product]
 print(Product_Name)
 
 
-# Product Price
-Price = soup.find_all(class_= "")
-print(Price)
 
-""" for Prc in Price:
-    print(Prc.text)
-Product_price = [Prc.text.strip()] """
+
+
