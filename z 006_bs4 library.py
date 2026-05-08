@@ -1,3 +1,6 @@
+# bs4 install >>> pip install bs4 (or)  python -m pip install beautifulsoup4
+
+
 #  HORROR BOOK NAME >>> Use BeautifulSoup (bs4)
 """ import requests
 from bs4 import BeautifulSoup

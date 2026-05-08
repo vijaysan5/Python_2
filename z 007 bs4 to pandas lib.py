@@ -21,7 +21,7 @@ print(Product_Name)
 Money = soup.find_all(class_="price-item price-item--regular")
 print(Money)
 
-Product_Price = {Prc.text.strip() for Prc in Money}
+Product_Price = {Prc.text.replace("Rs.", "").strip() for Prc in Money}
 
 Price=list(Product_Price)
 Price.pop(0)

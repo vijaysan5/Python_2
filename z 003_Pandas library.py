@@ -1,3 +1,5 @@
+# Pandas install >>> pip install pandas (or) python -m pip install pandas
+
 import pandas as pan
 import numpy as num
 
