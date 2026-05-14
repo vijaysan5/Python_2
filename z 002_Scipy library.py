@@ -18,8 +18,8 @@ concatenat = num.concatenate((array_One, array_Three))
 stack = num.vstack((array_One, array_Three))
 
 "Printings"
-print("Mean Value (numoy): ", mean_value)
-print("Median Value (numoy):", median_value)
+print("Mean Value (numpy): ", mean_value)
+print("Median Value (numpy):", median_value)
 print("Standard Value :", standard_value)
 print("variance :", vars_value)
 print("Maximum Value :", max_value)

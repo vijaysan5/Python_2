@@ -1,3 +1,4 @@
+
 import numpy as num 
 
 # Numpy Lib. > Creating Array :
@@ -12,16 +13,16 @@ Zeros = num.zeros((4,4))
 Ones = num.ones((3,2))
 Identity = num.eye(5,5)
 Random_ar = num.random.rand(3,2)
-print(Zeros)
-print(Ones)
-print(Identity)
-print(Random_ar)
+print("\nZeros :\n", Zeros)
+print("\nOnes :\n", Ones)
+print("\nIdentity :\n", Identity)
+print("\nRandom Array :\n", Random_ar)
 
 # Array properties :
-print("Size: ", np_1.size)
-print("Data Type: ", np_2.dtype)
-print("Shape: ", np_1.shape)
-print("Dimensions :", np_2.ndim)
+print("Size : ", np_1.size)
+print("Data Type : ", np_2.dtype)
+print("Shape : ", np_1.shape)
+print("Dimensions : ", np_2.ndim)
 
 # Index and Slicing:
 print("Index (found) :", np_2[1,2])  # list in >>> get 1st_list >>> get 2nd value in 1st_list... (0,1,2,... index) 
@@ -30,6 +31,7 @@ print("Sliced array :", np_1[1:4])
 
 xy = num.array([[[14,25,39],[44,55,60],[75,89,98]]])
 print(xy[0,2,0])
+print(type(xy))
 
 # Transposed and reshape :
 trans = np_2.T                      # Auto Trans
@@ -71,15 +73,15 @@ determinant_mx = num.linalg.det(matrix_mx)
 print("Inverse :", inverse_mx)
 print("Determinant :", determinant_mx)
 
-# Use Random >> in numpy lib
+# Use Random >> in numpy lib  
 random_float = num.random.rand()
-print("Random Value :", random_float)
+print("Random Value :", random_float)                   # SHOW >>> 0 to 1
 
 random_int = num.random.randint(1,50, (3,3))
-print("Random Integer Value :", random_int)
+print("Random Integer Value :", random_int)             # SHOW >>> INTEGER (3-row 3-column)
 
 random_normal = num.random.normal(0,1,(3,4))
-print("Random Normal Distribution :", random_normal)
+print("Random Normal Distribution :", random_normal)    # SHOW >>> 0 to 1 (3-row 4-column)
 
 
 "Empty Value..."
